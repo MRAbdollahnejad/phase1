@@ -1,0 +1,10 @@
+package entity.enums;
+
+public enum OrderStatus {
+    WAITING_FOR_SPECIALISTS_OFFER,
+    WAITING_FOR_CUSTOMER_TO_CHOOSE,
+    WAITING_FOR_THE_SPECIALIST_TO_COME_TO_YOUR_PLACE,
+    STARTED,
+    DONE,
+    PAID
+}
