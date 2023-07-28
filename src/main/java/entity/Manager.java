@@ -13,5 +13,5 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 public class Manager extends BaseUserEntity {
-
+    Double income;
 }

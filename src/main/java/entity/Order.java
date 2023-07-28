@@ -5,10 +5,7 @@ import entity.enums.OrderStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
@@ -20,7 +17,9 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "customersorder")
 public class Order extends BaseEntity<Long> {
+
     @ManyToOne
     SubService subService;
     Double orderPrice;

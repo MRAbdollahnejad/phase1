@@ -1,0 +1,9 @@
+
+0
+java:S1220""Move this file to a named package.
+V	java:S125
+"<This block of commented-out lines of code should be removed.(¹òþ‡þÿÿÿÿ
+P
+java:S1128":Remove this unused import 'repository.CustomerRepository'.(ð‡Ç
+E
+java:S1128"/Remove this unused import 'util.UserValidator'.(“™—¸

@@ -21,8 +21,8 @@ public class Offer extends BaseEntity<Long> {
     Order order;
     @ManyToOne
     Specialist specialist;
-    LocalDate localDate=LocalDate.now();
-    LocalTime localTime=LocalTime.now();
+    LocalDate offerCreateDate=LocalDate.now();
+    LocalTime offerCreateTime=LocalTime.now();
     Double OfferPrice;
     LocalDate startDayOffer;
     LocalTime startTimeOffer;

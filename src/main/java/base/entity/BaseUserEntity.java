@@ -4,10 +4,7 @@ import entity.Credit;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -19,13 +16,16 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@MappedSuperclass
+@Table(name = BaseUserEntity.NAME)
 public class BaseUserEntity extends BaseEntity<Long>{
+    public static final String NAME="base_users_entity";
     String firstname;
     String lastname;
     String emailAddress;
     String password;
-    LocalDate localDate=LocalDate.now();
-    LocalTime localTime=LocalTime.now();
+    LocalDate createDate=LocalDate.now();
+    LocalTime createTime=LocalTime.now();
     @OneToOne
     Credit credit;
 }
