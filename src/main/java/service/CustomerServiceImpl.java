@@ -1,44 +1,46 @@
 package service;
 
-import dto.CustomerDTO;
+import base.service.BaseUserServiceImpl;
+import dto.UserDTO;
 import entity.Credit;
 import entity.Customer;
 import repository.CreditRepository;
 import repository.CustomerRepository;
 import util.UserValidator;
 
-public class CustomerServiceImpl implements CustomerService {
-    CustomerRepository customerRepository;
+public class CustomerServiceImpl extends BaseUserServiceImpl<Customer,CustomerRepository>
+        implements CustomerService {
+
     CreditRepository creditRepository;
     UserValidator userValidator = new UserValidator();
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, CreditRepository creditRepository) {
-        this.customerRepository = customerRepository;
+    public CustomerServiceImpl(CustomerRepository repository, CreditRepository creditRepository) {
+        super(repository);
         this.creditRepository = creditRepository;
     }
 
     @Override
-    public void customerSignUp(CustomerDTO customerDTO) {
+    public void customerSignUp(UserDTO userDTO) {
         Customer customer = new Customer();
-        if (customerDTO.getFirstname() != null && customerDTO.getLastname() != null) {
-            customer.setFirstname(customerDTO.getFirstname());
-            customer.setLastname(customerDTO.getLastname());
-            if (customerDTO.getEmailAddress() != null) {
-                String emailAddress = customerDTO.getEmailAddress().toLowerCase();
+        if (userDTO.getFirstname() != null && userDTO.getLastname() != null) {
+            customer.setFirstname(userDTO.getFirstname());
+            customer.setLastname(userDTO.getLastname());
+            if (userDTO.getEmailAddress() != null) {
+                String emailAddress = userDTO.getEmailAddress().toLowerCase();
                 if (userValidator.EmailPatternValidator(emailAddress)) {
-                    if (customerRepository.isEmailUnique(emailAddress)) {
+                    if (repository.isEmailUnique(emailAddress)) {
                         customer.setEmailAddress(emailAddress);
-                        if (userValidator.passwordValidator(customerDTO.getPassword())) {
-                            customer.setPassword(customerDTO.getPassword());
+                        if (userValidator.passwordValidator(userDTO.getPassword())) {
+                            customer.setPassword(userDTO.getPassword());
                             Credit credit=new Credit();
                             credit.setCredit(0D);
                             creditRepository.beginTransaction();
                             creditRepository.save(credit);
                             creditRepository.commitTransaction();
                             customer.setCredit(credit);
-                            customerRepository.beginTransaction();
-                            customerRepository.save(customer);
-                            customerRepository.commitTransaction();
+                            repository.beginTransaction();
+                            repository.save(customer);
+                            repository.commitTransaction();
                         } else {
                             System.out.println("Minimum eight characters, at least one uppercase letter," +
                                     " one lowercase letter, one number and one special character");
@@ -51,11 +53,11 @@ public class CustomerServiceImpl implements CustomerService {
                 }
             } else {
                 try {
-                    userValidator.EmailPatternValidator(customerDTO.getEmailAddress());
+                    userValidator.EmailPatternValidator(userDTO.getEmailAddress());
                 } catch (NullPointerException e) {
                     System.out.println("email is empty");
                 }
             }
-        } else System.out.println("firstname and lastname can't be empty");
+        } else System.out.println("firstname or lastname can't be empty");
     }
 }

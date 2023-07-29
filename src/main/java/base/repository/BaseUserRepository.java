@@ -8,4 +8,5 @@ public interface BaseUserRepository<E extends BaseUserEntity>
 
     boolean isEmailUnique(String email);
 
+
 }

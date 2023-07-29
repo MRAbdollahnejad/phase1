@@ -18,4 +18,5 @@ public abstract class BaseUserRepositoryImpl<E extends BaseUserEntity>
                 .setParameter("email", email)
                 .getResultList().size() == 0;
     }
+
 }

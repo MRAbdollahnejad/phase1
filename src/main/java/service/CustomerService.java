@@ -1,12 +1,12 @@
 package service;
 
-import dto.CustomerDTO;
-import repository.CustomerRepository;
-import repository.Impl.CustomerRepositoryImpl;
+import base.service.BaseUserService;
+import dto.UserDTO;
+import entity.Customer;
 
-public interface CustomerService {
+public interface CustomerService extends BaseUserService<Customer> {
 
-    void customerSignUp(CustomerDTO customerDTO);
+    void customerSignUp(UserDTO userDTO);
 
 
 }

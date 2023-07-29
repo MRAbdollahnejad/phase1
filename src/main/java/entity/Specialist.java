@@ -16,12 +16,10 @@ import java.util.*;
 @Setter
 public class Specialist extends BaseUserEntity {
     SpecialistStatus status;
-    Byte[] image;
+    @Lob
+    byte[] image;
     Integer score = 0;
 
-//    @JoinTable(name = "specialist-subService",
-//            joinColumns = @JoinColumn(name="specialistId"),
-//            inverseJoinColumns = @JoinColumn(name = "subServiceId"))
     @ManyToMany
     Set<SubService> subServices=new HashSet<>();
 }

@@ -1,14 +1,17 @@
 package dto;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @FieldDefaults( level = AccessLevel.PRIVATE)
 @Getter
 @Setter
-public class CustomerDTO {
+public class UserDTO implements Serializable {
     String firstname;
     String lastname;
     String emailAddress;

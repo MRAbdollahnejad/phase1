@@ -13,6 +13,7 @@ import javax.persistence.MappedSuperclass;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class SubService extends BaseEntity<Long> {
     String name;
     Double price;

@@ -15,12 +15,14 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Service extends BaseEntity<Long> {
 
     String name;
 
     @OneToMany
     @JoinColumn(name = "ServiceId")
+    @ToString.Exclude
     Set<SubService> subService =new HashSet<>();
 
 }
