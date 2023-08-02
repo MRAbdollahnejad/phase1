@@ -8,7 +8,8 @@ import repository.CreditRepository;
 import repository.CustomerRepository;
 import util.UserValidator;
 
-public class CustomerServiceImpl extends BaseUserServiceImpl<Customer,CustomerRepository>
+public class CustomerServiceImpl
+        extends BaseUserServiceImpl<Customer,CustomerRepository>
         implements CustomerService {
 
     CreditRepository creditRepository;

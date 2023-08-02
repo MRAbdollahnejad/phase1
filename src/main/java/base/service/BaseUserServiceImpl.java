@@ -4,7 +4,8 @@ import base.entity.BaseUserEntity;
 import base.repository.BaseUserRepository;
 import util.UserValidator;
 
-public abstract class BaseUserServiceImpl<Q extends BaseUserEntity, R extends BaseUserRepository<Q>>
+public abstract class BaseUserServiceImpl
+        <Q extends BaseUserEntity, R extends BaseUserRepository<Q>>
         extends BaseServiceImpl<Q, Long, R>
         implements BaseUserService<Q> {
 

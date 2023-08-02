@@ -1,4 +1,5 @@
 import dto.SpecialistDTO;
+import service.ManagerService;
 import service.SpecialistService;
 import util.ApplicationContext;
 
@@ -16,13 +17,12 @@ public class Main {
 //        userDTO.setPassword("asdfAuyf1#23");
 //        customerService.customerSignUp(userDTO);
 
-        SpecialistService specialistService=ApplicationContext.getSpecialistService();
-        SpecialistDTO specialistDTO =new SpecialistDTO();
-
-
-        specialistService.changeUserPassword(specialistService.findById(12L)
-                .get(),"asdfasdfq");
-
+//        SpecialistService specialistService=ApplicationContext.getSpecialistService();
+//        SpecialistDTO specialistDTO =new SpecialistDTO();
+//
+//
+//        specialistService.changeUserPassword(specialistService.findById(12L)
+//                .get(),"asdfasdfq");
 
 
 //        specialistDTO.setFirstname("wer");
@@ -31,6 +31,9 @@ public class Main {
 //        specialistDTO.setPassword("ASddf23@#");
 //        specialistDTO.setImagePath("src/image/download4.png");
 //        specialistService.signupSpecialist(specialistDTO);
+
+        ManagerService managerService=ApplicationContext.getManagerService();
+        managerService.createService("buiLDing decoration ");
 
 
 

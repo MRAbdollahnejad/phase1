@@ -10,6 +10,8 @@ import repository.SpecialistRepository;
 import util.ImageConvertToByte;
 import util.UserValidator;
 
+import java.io.FileNotFoundException;
+
 
 public class SpecialistServiceImpl extends
         BaseUserServiceImpl<Specialist, SpecialistRepository>
@@ -43,7 +45,7 @@ public class SpecialistServiceImpl extends
                             try {
                             byte[] bytes = imageConvertToByte.imageConvertToByte(specialistDTO.getImagePath());
                             specialist.setImage(bytes);
-                            }catch (ImageException e){
+                            }catch (ImageException | FileNotFoundException e){
                                 System.out.println(e.getMessage());
                             }
                             if (specialist.getImage()==null){

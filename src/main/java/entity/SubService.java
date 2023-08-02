@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -18,4 +19,6 @@ public class SubService extends BaseEntity<Long> {
     String name;
     Double price;
     String description;
+    @ManyToOne
+    Service service;
 }

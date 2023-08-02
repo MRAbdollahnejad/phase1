@@ -18,10 +18,13 @@ import java.util.Set;
 @ToString
 public class Service extends BaseEntity<Long> {
 
+    String databaseName;
+
     String name;
 
-    @OneToMany
-    @JoinColumn(name = "ServiceId")
+
+
+    @OneToMany(mappedBy = "service")
     @ToString.Exclude
     Set<SubService> subService =new HashSet<>();
 

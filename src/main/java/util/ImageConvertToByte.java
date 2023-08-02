@@ -7,13 +7,17 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
 public class ImageConvertToByte {
 
-    public byte[] imageConvertToByte(String imagePath) {
+    public byte[] imageConvertToByte(String imagePath) throws FileNotFoundException {
         File file = new File(imagePath);
+        if(!file.exists()){
+            throw new FileNotFoundException("file not exist");
+        }
         if (!formatOfFile(file).equals("jpg")){
             throw new ImageException("wrong format");
         }

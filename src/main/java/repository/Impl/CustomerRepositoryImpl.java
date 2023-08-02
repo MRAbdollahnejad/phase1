@@ -6,7 +6,9 @@ import repository.CustomerRepository;
 
 import javax.persistence.EntityManager;
 
-public class CustomerRepositoryImpl extends BaseUserRepositoryImpl<Customer> implements CustomerRepository {
+public class CustomerRepositoryImpl
+        extends BaseUserRepositoryImpl<Customer>
+        implements CustomerRepository {
     public CustomerRepositoryImpl(EntityManager em) {
         super(em);
     }

@@ -16,7 +16,6 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-//@MappedSuperclass
 @Table(name = BaseUserEntity.NAME)
 public class BaseUserEntity extends BaseEntity<Long>{
     public static final String NAME="base_users_entity";

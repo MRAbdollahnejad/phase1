@@ -1,16 +1,9 @@
 package util;
 
 import lombok.Getter;
-import repository.CreditRepository;
-import repository.CustomerRepository;
-import repository.Impl.CreditRepositoryImpl;
-import repository.Impl.CustomerRepositoryImpl;
-import repository.Impl.SpecialistRepositoryImpl;
-import repository.SpecialistRepository;
-import service.CustomerService;
-import service.CustomerServiceImpl;
-import service.SpecialistService;
-import service.SpecialistServiceImpl;
+import repository.*;
+import repository.Impl.*;
+import service.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -23,9 +16,14 @@ public class ApplicationContext {
 
     private  static CustomerRepository customerRepository;
     private static CreditRepository creditRepository;
-    private  static CustomerService customerService;
+    private static ManagerRepository managerRepository;
+    private static ServiceRepository serviceRepository;
     private static SpecialistRepository specialistRepository;
+
+    private  static CustomerService customerService;
     private static SpecialistService specialistService;
+    private static ManagerService managerService;
+    private static ServiceService serviceService;
 
     public static CustomerRepository getCustomerRepository() {
         if (customerRepository == null) {
@@ -45,6 +43,19 @@ public class ApplicationContext {
         }
         return specialistRepository;
     }
+    public static ManagerRepository getManagerRepository() {
+        if (managerRepository == null) {
+            managerRepository = new ManagerRepositoryImpl(entityManager);
+        }
+        return managerRepository;
+    }
+    public static ServiceRepository getServiceRepository() {
+        if (serviceRepository == null) {
+            serviceRepository = new ServiceRepositoryImpl(entityManager);
+        }
+        return serviceRepository;
+    }
+
 
     public static CustomerService getCustomerService() {
         if (customerService == null) {
@@ -61,6 +72,22 @@ public class ApplicationContext {
             );
         }
         return specialistService;
+    }
+    public static ManagerService getManagerService() {
+        if (managerService == null) {
+            managerService = new ManagerServiceImpl(
+                    getManagerRepository(),getServiceService()
+            );
+        }
+        return managerService;
+    }
+    public static ServiceService getServiceService() {
+        if (serviceService == null) {
+            serviceService = new ServiceServiceImpl(
+                    getServiceRepository()
+            );
+        }
+        return serviceService;
     }
 
 }
