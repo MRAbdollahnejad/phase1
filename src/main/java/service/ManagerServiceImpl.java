@@ -4,11 +4,16 @@ import base.service.BaseUserServiceImpl;
 import dto.SubServiceDTO;
 import entity.Manager;
 import entity.Service;
+import entity.Specialist;
 import entity.SubService;
 import exception.ServiceNotFoundException;
 import exception.SubServiceException;
 import repository.ManagerRepository;
+
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 public class ManagerServiceImpl
@@ -17,12 +22,14 @@ public class ManagerServiceImpl
 
     ServiceService serviceService;
     SubServiceService subServiceService;
+    SpecialistService specialistService;
 
     public ManagerServiceImpl(ManagerRepository repository, ServiceService serviceService,
-                              SubServiceService subServiceService) {
+                              SubServiceService subServiceService,SpecialistService specialistService) {
         super(repository);
         this.serviceService = serviceService;
         this.subServiceService=subServiceService;
+        this.specialistService=specialistService;
     }
 
     @Override
@@ -60,5 +67,41 @@ public class ManagerServiceImpl
             throw new ServiceNotFoundException("service with this name not found ");
         }
     }
+
+    @Override
+    public void addSpecialToSubService(String email,SubService subService) {
+        if(specialistService.findByEmail(email)==null){
+            return;
+        }
+        if (subService==null){
+            return;
+        }
+        Set<Specialist> specialistSet = subService.getSpecialistSet();
+        specialistSet.add(specialistService.findByEmail(email));
+        subService.setSpecialistSet(specialistSet);
+        subServiceService.save(subService);
+    }
+
+    @Override
+    public void removeSpecialistFromSubService(String email, SubService subService) {
+        if(specialistService.findByEmail(email)==null){
+            System.out.println("wrong email entered");
+            return;
+        }
+        if (subService==null){
+            System.out.println("not found sub service");
+            return;
+        }
+        Set<Specialist> specialistSet = subService.getSpecialistSet();
+        specialistSet.remove(specialistService.findByEmail(email));
+        subService.setSpecialistSet(specialistSet);
+        subServiceService.save(subService);
+    }
+
+    @Override
+    public void confirmSpecialist(String email) {
+
+    }
+
 
 }

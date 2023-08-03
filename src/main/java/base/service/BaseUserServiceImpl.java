@@ -29,4 +29,18 @@ public abstract class BaseUserServiceImpl
             this.save(q);
         }
     }
+
+    @Override
+    public Q findByEmail(String email) {
+        boolean flag=false;
+        try {
+            repository.findByEmail(email);
+            flag=true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        if (flag){
+            return repository.findByEmail(email);
+        }else return null;
+    }
 }

@@ -1,7 +1,9 @@
 import dto.SpecialistDTO;
+import dto.SubServiceDTO;
 import service.ManagerService;
 import service.ServiceService;
 import service.SpecialistService;
+import service.SubServiceService;
 import util.ApplicationContext;
 
 public class Main {
@@ -34,8 +36,21 @@ public class Main {
 //        specialistService.signupSpecialist(specialistDTO);
 
         ManagerService managerService=ApplicationContext.getManagerService();
-        managerService.createService("buiLDing decoration ");
+        SubServiceService subServiceService = ApplicationContext.getSubServiceService();
+//        managerService.createService("buiLDing decoration ");
+//        SubServiceDTO subServiceDTO=new SubServiceDTO();
+//        subServiceDTO.setName("internal design");
+//        subServiceDTO.setDescription("inside design for buildings");
+//        subServiceDTO.setPrice(1234D);
 
+//        try {
+//            managerService.addSubServiceToService("buiLding DecoratioN",subServiceDTO);
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+
+//        managerService.addSpecialToSubService("as82dfgs@gmail.com",subServiceService.findById(30L).get());
+//        managerService.removeSpecialistFromSubService("as82dfgs@gmail.com",subServiceService.findById(30L).get());
 
 
 //        File file = new File("src/image/download.jpg");

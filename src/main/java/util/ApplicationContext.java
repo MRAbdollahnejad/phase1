@@ -85,7 +85,7 @@ public class ApplicationContext {
     public static ManagerService getManagerService() {
         if (managerService == null) {
             managerService = new ManagerServiceImpl(
-                    getManagerRepository(),getServiceService(),getSubServiceService()
+                    getManagerRepository(),getServiceService(),getSubServiceService(),getSpecialistService()
             );
         }
         return managerService;

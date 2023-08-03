@@ -20,8 +20,7 @@ public class Specialist extends BaseUserEntity {
     byte[] image;
     Integer score = 0;
 
-    @ManyToMany
-    Set<SubService> subServices=new HashSet<>();
+
 }
 
 

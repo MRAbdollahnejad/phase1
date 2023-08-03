@@ -7,4 +7,5 @@ public interface BaseUserService<Q extends BaseUserEntity> extends BaseService<Q
 
     boolean isEmailUnique(String email);
     void changeUserPassword(Q q , String newPassword) ;
+    Q findByEmail(String email);
 }

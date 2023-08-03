@@ -5,8 +5,11 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import java.util.HashSet;
+import java.util.Set;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
@@ -21,4 +24,7 @@ public class SubService extends BaseEntity<Long> {
     String description;
     @ManyToOne
     Service service;
+    @ManyToMany
+    @ToString.Exclude
+    Set<Specialist> specialistSet=new HashSet<>();
 }

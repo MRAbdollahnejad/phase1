@@ -30,6 +30,7 @@ public class Order extends BaseEntity<Long> {
     OrderStatus orderStatus;
     @OneToMany(mappedBy = "order")
     Set<Offer> offers = new HashSet<>();
+    Long acceptedOfferId =-1L;
     @OneToOne
     CustomerOpinion customerOpinion;
 }
