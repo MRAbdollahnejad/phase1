@@ -52,6 +52,7 @@ public class Main {
 //        managerService.addSpecialToSubService("as82dfgs@gmail.com",subServiceService.findById(30L).get());
 //        managerService.removeSpecialistFromSubService("as82dfgs@gmail.com",subServiceService.findById(30L).get());
 
+//        managerService.confirmSpecialist("as82dfgs@gmail.com");
 
 //        File file = new File("src/image/download.jpg");
 //        System.out.println(FilenameUtils.getExtension(file.getName()));

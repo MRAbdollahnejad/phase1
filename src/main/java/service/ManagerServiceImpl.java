@@ -6,6 +6,7 @@ import entity.Manager;
 import entity.Service;
 import entity.Specialist;
 import entity.SubService;
+import entity.enums.SpecialistStatus;
 import exception.ServiceNotFoundException;
 import exception.SubServiceException;
 import repository.ManagerRepository;
@@ -102,7 +103,17 @@ public class ManagerServiceImpl
 
     @Override
     public void confirmSpecialist(String email) {
-
+        if(specialistService.findByEmail(email)==null){
+            System.out.println("wrong email entered");
+            return;
+        }
+        Specialist specialist = specialistService.findByEmail(email);
+        if (specialist.getStatus().equals(SpecialistStatus.confirmed)){
+            System.out.println("already confirmed");
+            return;
+        }
+        specialist.setStatus(SpecialistStatus.confirmed);
+        specialistService.save(specialist);
     }
 
 
