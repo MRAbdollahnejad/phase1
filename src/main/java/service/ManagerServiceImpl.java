@@ -71,9 +71,11 @@ public class ManagerServiceImpl
     @Override
     public void addSpecialToSubService(String email,SubService subService) {
         if(specialistService.findByEmail(email)==null){
+            System.out.println("not found specialist with this email");
             return;
         }
         if (subService==null){
+            System.out.println("not found sub service");
             return;
         }
         Set<Specialist> specialistSet = subService.getSpecialistSet();
