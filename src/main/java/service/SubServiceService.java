@@ -1,12 +1,12 @@
-package repository;
+package service;
 
-import base.repository.BaseRepository;
+import base.service.BaseService;
 import entity.Service;
 import entity.SubService;
 
 import java.util.Optional;
 
-public interface SubServiceRepository extends BaseRepository<SubService,Long> {
-
+public interface SubServiceService extends BaseService<SubService,Long> {
     boolean existBySubServiceNameAndService(String subServiceName, Service service);
+
 }

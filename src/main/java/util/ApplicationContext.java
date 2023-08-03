@@ -19,11 +19,14 @@ public class ApplicationContext {
     private static ManagerRepository managerRepository;
     private static ServiceRepository serviceRepository;
     private static SpecialistRepository specialistRepository;
+    private static SubServiceRepository subServiceRepository;
 
     private  static CustomerService customerService;
     private static SpecialistService specialistService;
     private static ManagerService managerService;
     private static ServiceService serviceService;
+    private static SubServiceService subServiceService;
+
 
     public static CustomerRepository getCustomerRepository() {
         if (customerRepository == null) {
@@ -55,6 +58,12 @@ public class ApplicationContext {
         }
         return serviceRepository;
     }
+    public static SubServiceRepository getSubServiceRepository() {
+        if (subServiceRepository == null) {
+            subServiceRepository = new SubServiceRepositoryImpl(entityManager);
+        }
+        return subServiceRepository;
+    }
 
 
     public static CustomerService getCustomerService() {
@@ -76,7 +85,7 @@ public class ApplicationContext {
     public static ManagerService getManagerService() {
         if (managerService == null) {
             managerService = new ManagerServiceImpl(
-                    getManagerRepository(),getServiceService()
+                    getManagerRepository(),getServiceService(),getSubServiceService()
             );
         }
         return managerService;
@@ -88,6 +97,14 @@ public class ApplicationContext {
             );
         }
         return serviceService;
+    }
+    public static SubServiceService getSubServiceService() {
+        if (subServiceService == null) {
+            subServiceService = new SubServiceServiceImpl(
+                    getSubServiceRepository()
+            );
+        }
+        return subServiceService;
     }
 
 }

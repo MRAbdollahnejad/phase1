@@ -1,5 +1,6 @@
 import dto.SpecialistDTO;
 import service.ManagerService;
+import service.ServiceService;
 import service.SpecialistService;
 import util.ApplicationContext;
 
@@ -46,7 +47,7 @@ public class Main {
 //        ImageIO.write(bImage, "jpg", bos );
 //        byte [] data = bos.toByteArray();
 //        System.out.println(Arrays.toString(data));
-
+//
 //        BufferedImage bImage2 = ImageIO.read(new File("sample.jpg"));
 //        ByteArrayOutputStream bos2 = new ByteArrayOutputStream();
 //        ImageIO.write(bImage2, "jpg", bos2 );
